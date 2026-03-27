@@ -164,12 +164,13 @@ if st.session_state.inventory:
             client = OpenAI(api_key=st.session_state.api_key)
             try:
                 resp = client.chat.completions.create(
-                    model="o3-mini",
+                    model="o4-mini",
                     messages=[
                         {"role": "system", "content": "You are a helpful culinary assistant."},
                         {"role": "user", "content": prompt},
                     ],
                     #temperature=0.7,
+                    #max_tokens=15000,
                     max_completion_tokens=15000,
                 )
                 st.markdown(resp.choices[0].message.content.strip())
